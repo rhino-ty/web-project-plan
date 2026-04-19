@@ -1,6 +1,10 @@
 ---
 name: app-plan
 description: "앱 빌딩 프로젝트를 시작할 때 기획을 구체화하고 문서 구조를 세팅하는 스킬. 개발자를 대상으로 기능, 기술 스택, MVP 스코프를 인터뷰로 확정하고 프로젝트 문서 + CLAUDE.md를 생성한다. '앱 만들려고', '새 프로젝트 시작', '앱 기획', 'app plan', '문서 구조 잡아줘', '프로젝트 세팅', '스택 잡아줘' 같은 말이 나오면 트리거한다."
+license: MIT
+metadata:
+  author: rhino-ty
+  version: "1.0.0"
 ---
 
 # App Plan Interview
