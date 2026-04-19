@@ -1,6 +1,6 @@
 # Web Project Plan
 
-> Claude Code skill that turns a vague web project idea into a concrete project setup through a structured interview.
+> AI coding agent skill that turns a vague web project idea into a concrete project setup through a structured interview.
 
 ## What it does
 
@@ -16,7 +16,8 @@ When you say "I want to build a web project" or "new project", this skill walks 
 At the end, you get real files:
 
 ```
-CLAUDE.md          # Agent execution context
+AGENTS.md          # Cross-agent context (works with Claude, Codex, Copilot, Gemini)
+CLAUDE.md          # Claude Code specific (generated if using Claude Code)
 README.md          # Project overview
 docs/
   INDEX.md         # Document map
@@ -24,6 +25,18 @@ docs/
   ROADMAP.md       # MVP scope + backlog
   references/      # Tech reference docs (AUTH.md, DB.md, UI.md, ...)
 ```
+
+## Cross-agent compatibility
+
+`AGENTS.md` is the primary output — it's the cross-agent standard:
+
+| Agent | Reads AGENTS.md? | Extra file generated |
+|-------|-------------------|----------------------|
+| Claude Code | Yes | `CLAUDE.md` (auto-generated) |
+| OpenAI Codex | Yes | — |
+| GitHub Copilot | Yes (agent mode) | — |
+| Gemini CLI | Yes | — |
+| Cursor | No | `.cursorrules` (suggested) |
 
 ## Install
 
@@ -43,9 +56,9 @@ npx skills add rhino-ty/web-project-plan
 | German | `neues Projekt`, `Projekt einrichten` |
 | Spanish | `nuevo proyecto`, `configurar proyecto` |
 
-## Example output: CLAUDE.md
+## Example output: AGENTS.md
 
-After the interview, you get a CLAUDE.md like this (trimmed):
+After the interview, you get an AGENTS.md like this (trimmed):
 
 ```md
 ## Project Overview
@@ -81,12 +94,12 @@ src/
 ```
 SKILL.md                        # Main skill instructions
 references/
-  CLAUDE_MD_GUIDE.md            # CLAUDE.md writing guide & templates
+  AGENTS_MD_GUIDE.md            # AGENTS.md writing guide & templates
 ```
 
 ## Who is this for
 
-Developers who use Claude Code and want to skip the "blank project" paralysis. Talk through your idea and get a structured project scaffold.
+Developers who use any AI coding agent and want to skip the "blank project" paralysis. Talk through your idea and get a structured project scaffold that works across agents.
 
 ## Language
 

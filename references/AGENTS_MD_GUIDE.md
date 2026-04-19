@@ -1,7 +1,17 @@
-# CLAUDE.md Writing Guide
+# AGENTS.md Writing Guide
 
-When Claude Code first opens a project, it reads this file and should be able to start working immediately.
-CLAUDE.md is not an "onboarding doc" — it's **execution context for the agent**.
+`AGENTS.md` is the cross-agent standard context file read by multiple AI coding agents:
+
+| Agent | Reads AGENTS.md? | Own file |
+|-------|-------------------|----------|
+| Claude Code | Yes | `CLAUDE.md` |
+| OpenAI Codex | Yes (primary) | — |
+| GitHub Copilot | Yes (agent mode) | `.github/copilot-instructions.md` |
+| Gemini CLI | Yes | `GEMINI.md` |
+| Cursor | No | `.cursorrules` |
+| Cline | No | `.clinerules` |
+
+Put all universal project context in `AGENTS.md`. It's not an "onboarding doc" — it's **execution context for AI agents**.
 
 **Writing principles**
 - Include: Things the agent would get wrong without knowing
@@ -424,7 +434,7 @@ main merge: Vercel auto deploy
 | Standard app (auth + DB) | 60–100 lines |
 | Complex app (AI + payments + realtime) | 100–150 lines |
 
-If over 150 lines, delegate details to dedicated docs in `docs/references/` and link from CLAUDE.md:
+If over 150 lines, delegate details to dedicated docs in `docs/references/` and link from AGENTS.md:
 ```md
 ## Auth
 → Details: docs/references/AUTH.md

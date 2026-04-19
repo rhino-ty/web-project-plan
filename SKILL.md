@@ -3,14 +3,14 @@ name: web-project-plan
 description: >
   Skill for planning and scaffolding new web projects through a structured interview.
   Walks developers through features, tech stack, MVP scope, and generates
-  CLAUDE.md + docs/ structure as real files.
+  AGENTS.md + docs/ structure as real files. Also generates CLAUDE.md for Claude Code users.
   Triggers on: "new project", "project setup", "pick a stack", "web project plan",
   "새 프로젝트", "프로젝트 세팅", "スタック選定", "新しいプロジェクト",
   "新项目", "项目搭建", "nouveau projet", "neues Projekt", "nuevo proyecto"
 license: MIT
 metadata:
   author: rhino-ty
-  version: "2.0.0"
+  version: "2.1.0"
 ---
 
 # Web Project Plan
@@ -19,7 +19,10 @@ Skill that concretizes a new web project through an interview and generates proj
 
 **Audience**: Developers. Use technical terms directly.
 **Scope**: Web projects only.
-**Goal**: By end of session, `CLAUDE.md` + required `docs/` structure exist as real files.
+**Goal**: By end of session, `AGENTS.md` + required `docs/` structure exist as real files.
+
+> **AGENTS.md** is the cross-agent standard read by Claude Code, Codex, Copilot, and Gemini CLI.
+> If the user is on Claude Code, also generate `CLAUDE.md` with Claude-specific settings (see Phase 4-3).
 
 ---
 
@@ -27,7 +30,8 @@ Skill that concretizes a new web project through an interview and generates proj
 
 ```
 README.md
-CLAUDE.md
+AGENTS.md              # Cross-agent context (Claude, Codex, Copilot, Gemini)
+CLAUDE.md              # Claude Code specific (optional — see Phase 4-3)
 docs/
   INDEX.md             # Document map
   QUICK_REF.md         # Commands & env vars cheatsheet
@@ -273,8 +277,21 @@ Show the full feature list from Phase 2–3:
    → Unit only / Unit + E2E / none
    → E2E tool: Playwright / Cypress
 4. Monorepo vs single repo?
-5. AI coding tool? (Claude Code / Cursor / manual coding)
+5. AI coding tool? (Claude Code / Codex / Cursor / Copilot / Gemini / none)
 ```
+
+**Agent context file generation** (based on Q5 answer):
+
+| Q5 Answer | Files generated |
+|-----------|----------------|
+| Any AI tool | `AGENTS.md` (always — cross-agent standard) |
+| Claude Code | `AGENTS.md` + `CLAUDE.md` (Claude-specific overrides) |
+| Cursor | `AGENTS.md` + `.cursorrules` (symlink or copy of AGENTS.md) |
+| None / manual | `AGENTS.md` still generated (useful if they adopt AI tools later) |
+
+> `AGENTS.md` contains: project overview, commands, structure, conventions, env vars, do-not rules.
+> `CLAUDE.md` adds Claude-specific settings only if needed (e.g., subdirectory CLAUDE.md, tool preferences).
+> If user picks Claude Code, proactively suggest: "I'll also generate CLAUDE.md for Claude-specific config."
 
 ---
 
@@ -299,9 +316,11 @@ Show the full feature list from Phase 2–3:
 | P-1: Responsive | `docs/references/UI.md` — Breakpoints & layout changes section |
 | N: SEO needed | `docs/references/UI.md` — SEO section |
 | CI/CD needed | `docs/references/ARCHITECTURE.md` — CI/CD section |
-| AI coding tool | Detailed `CLAUDE.md` + `docs/references/prompts/` |
+| AI coding tool = Claude Code | `AGENTS.md` + `CLAUDE.md` + `docs/references/prompts/` |
+| AI coding tool = other/none | `AGENTS.md` + `docs/references/prompts/` (if AI features exist) |
 
-**Always generated**: `README.md`, `CLAUDE.md`, `docs/INDEX.md`, `docs/QUICK_REF.md`, `docs/ROADMAP.md`, `docs/references/README.md`
+**Always generated**: `README.md`, `AGENTS.md`, `docs/INDEX.md`, `docs/QUICK_REF.md`, `docs/ROADMAP.md`, `docs/references/README.md`
+**Conditionally generated**: `CLAUDE.md` (if Claude Code user), `.cursorrules` (if Cursor user)
 
 ---
 
@@ -331,7 +350,7 @@ File naming:
 
 [Always generated]
 README.md
-CLAUDE.md
+AGENTS.md
 docs/
   INDEX.md
   QUICK_REF.md
@@ -347,6 +366,9 @@ docs/references/AI_SYSTEMS.md   ← AI features
 docs/references/UI.md           ← Screen specs + dark mode + SEO
 docs/references/ARCHITECTURE.md ← Storage, notifications, realtime, i18n, CI/CD
 
+[If Claude Code user]
+CLAUDE.md              ← Claude-specific overrides
+
 [Omitted]
 docs/references/API.md ... (one-line reason each)
 ```
@@ -355,11 +377,12 @@ docs/references/API.md ... (one-line reason each)
 
 If YES, generate in this order:
 
-1. `CLAUDE.md` — Read `references/CLAUDE_MD_GUIDE.md` first, then write
-2. `README.md` — Project overview + confirmed stack + local run instructions
-3. `docs/INDEX.md` — Links to all active docs + one-line descriptions
-4. `docs/ROADMAP.md` — Based on MVP scope cut results
-5. Remaining `docs/references/*.md` — Follow section template above
+1. `AGENTS.md` — Read `references/AGENTS_MD_GUIDE.md` first, then write
+2. `CLAUDE.md` — Only if Claude Code user. Symlink to AGENTS.md or add Claude-specific overrides
+3. `README.md` — Project overview + confirmed stack + local run instructions
+4. `docs/INDEX.md` — Links to all active docs + one-line descriptions
+5. `docs/ROADMAP.md` — Based on MVP scope cut results
+6. Remaining `docs/references/*.md` — Follow section template above
 
 ---
 
