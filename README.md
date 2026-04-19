@@ -1,10 +1,10 @@
-# App Plan
+# Web Project Plan
 
-> Claude Code skill that turns a vague app idea into a concrete project setup through a structured interview.
+> Claude Code skill that turns a vague web project idea into a concrete project setup through a structured interview.
 
 ## What it does
 
-When you say things like "I want to build an app" or "new project", this skill kicks in and walks you through a 4-phase interview:
+When you say things like "I want to build a web project" or "new project", this skill kicks in and walks you through a 4-phase interview:
 
 | Phase | What happens |
 |-------|-------------|
@@ -28,14 +28,14 @@ docs/
 ## Install
 
 ```bash
-npx skills add rhino-ty/app-plan
+npx skills add rhino-ty/web-project-plan
 ```
 
 ## Trigger keywords
 
-- `app plan`, `new project`, `app idea`
-- `document structure`, `project setup`, `pick a stack`
-- Korean: `앱 만들려고`, `새 프로젝트 시작`, `앱 기획`, `문서 구조 잡아줘`, `프로젝트 세팅`, `스택 잡아줘`
+- `web project plan`, `new project`, `project setup`
+- `document structure`, `pick a stack`
+- Korean: `웹 프로젝트 시작`, `새 프로젝트 시작`, `웹앱 기획`, `문서 구조 잡아줘`, `프로젝트 세팅`, `스택 잡아줘`
 
 ## File structure
 
