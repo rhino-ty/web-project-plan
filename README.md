@@ -16,8 +16,9 @@ When you say "I want to build a web project" or "new project", this skill walks 
 At the end, you get real files:
 
 ```
-AGENTS.md          # Cross-agent context (works with Claude, Codex, Copilot, Gemini)
-CLAUDE.md          # Claude Code specific (generated if using Claude Code)
+CLAUDE.md          # If using Claude Code
+  — or —
+AGENTS.md          # If using Codex / Copilot / Gemini / other
 README.md          # Project overview
 docs/
   INDEX.md         # Document map
@@ -28,15 +29,16 @@ docs/
 
 ## Cross-agent compatibility
 
-`AGENTS.md` is the primary output — it's the cross-agent standard:
+The skill generates the right context file based on your AI tool:
 
-| Agent | Reads AGENTS.md? | Extra file generated |
-|-------|-------------------|----------------------|
-| Claude Code | Yes | `CLAUDE.md` (auto-generated) |
-| OpenAI Codex | Yes | — |
-| GitHub Copilot | Yes (agent mode) | — |
-| Gemini CLI | Yes | — |
-| Cursor | No | `.cursorrules` (suggested) |
+| Agent | Generated file |
+|-------|----------------|
+| Claude Code | `CLAUDE.md` |
+| OpenAI Codex | `AGENTS.md` |
+| GitHub Copilot | `AGENTS.md` |
+| Gemini CLI | `AGENTS.md` |
+| Cursor | `AGENTS.md` + `.cursorrules` suggested |
+| None / not sure | `AGENTS.md` (most universal) |
 
 ## Install
 
@@ -56,9 +58,9 @@ npx skills add rhino-ty/web-project-plan
 | German | `neues Projekt`, `Projekt einrichten` |
 | Spanish | `nuevo proyecto`, `configurar proyecto` |
 
-## Example output: AGENTS.md
+## Example output
 
-After the interview, you get an AGENTS.md like this (trimmed):
+After the interview, you get a context file like this (trimmed):
 
 ```md
 ## Project Overview
@@ -99,7 +101,7 @@ references/
 
 ## Who is this for
 
-Developers who use any AI coding agent and want to skip the "blank project" paralysis. Talk through your idea and get a structured project scaffold that works across agents.
+Developers who use AI coding agents (Claude Code, Codex, Copilot, Gemini, Cursor, etc.) and want to skip the "blank project" paralysis. Talk through your idea and get a structured project scaffold.
 
 ## Language
 
