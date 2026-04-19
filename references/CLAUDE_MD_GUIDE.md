@@ -55,11 +55,6 @@ src/
   types/
 docs/
   references/    # 기술 레퍼런스 문서 (스킬 생성)
-  01-plan/       # PDCA: Plan
-  02-design/     # PDCA: 개발 설계
-  03-analysis/   # PDCA: Analysis
-  04-report/     # PDCA: Report
-  archive/       # 폐기 문서
 ```
 파일을 어디에 만들어야 하는지 알 수 있을 정도만.
 
@@ -367,11 +362,6 @@ src/
   types/
 docs/
   references/     # 기술 레퍼런스 (스킬 생성)
-  01-plan/        # PDCA Plan
-  02-design/      # PDCA 개발 설계
-  03-analysis/    # PDCA Analysis
-  04-report/      # PDCA Report
-  archive/        # 폐기 문서
 
 ## Key Conventions
 - 컴포넌트: PascalCase, named export

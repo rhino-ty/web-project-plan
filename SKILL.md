@@ -14,14 +14,7 @@ metadata:
 **대상**: 개발자. 기술 용어 그대로 사용한다.
 **플랫폼 스코프**: Web 프로젝트 전용.
 
-**목표 (2가지를 동시에 달성)**:
-1. **사용자**: 빠짐없는 기획 — 구축 시 신경 써야 할 대부분을 인터뷰로 커버
-2. **에이전트**: 하네스 엔지니어링 — 세션 끝에 `CLAUDE.md` + `docs/` 구조가 실제 파일로 존재하여, 이후 Claude Code 세션에서 에이전트가 **별도 질문 없이 바로 작업 투입** 가능
-
-> **하네스 엔지니어링이란?**
-> 프로젝트 환경(CLAUDE.md, docs/, 디렉토리 구조)을 AI 에이전트가 효과적으로 동작하도록 설계하는 것.
-> 이 스킬의 인터뷰 질문은 "사용자 기획"과 "에이전트 컨텍스트 확보"를 동시에 수행한다.
-> 인터뷰에서 얻은 답변 하나하나가 CLAUDE.md의 섹션, docs/references/의 파일로 변환된다.
+**목표**: 세션 끝에 `CLAUDE.md` + 필요한 `docs/` 구조가 실제 파일로 존재하는 것.
 
 ---
 
@@ -34,13 +27,10 @@ docs/
   INDEX.md             ← 문서 지도
   QUICK_REF.md         ← 커맨드·환경변수 치트시트
   ROADMAP.md           ← MVP 스코프 + 백로그
-  01-plan/             ← PDCA: Plan (사용자 관리)
-  02-design/           ← PDCA: 개발 설계 (사용자 관리)
-  03-analysis/         ← PDCA: Analysis (사용자 관리)
-  04-report/           ← PDCA: Report (사용자 관리)
-  archive/             ← 폐기 문서 보관 (사용자 관리)
   references/          ← 기술 레퍼런스 (이 스킬이 생성)
-    UI.md              ← 화면/UI 디자인 ≠ 02-design (개발 설계)
+    UI.md
+    AUTH.md
+    DB.md
     ...
 ```
 
@@ -306,8 +296,6 @@ Phase 2~3 전체 기능 목록을 보여주고:
 | CI/CD 있음 | `docs/references/ARCHITECTURE.md` — CI/CD 섹션 |
 | AI 코딩 도구 사용 | `CLAUDE.md` 상세 + `docs/references/prompts/` |
 
-> `docs/references/UI.md`는 화면 스펙 문서다. `docs/02-design/`(개발 설계)과 다르다.
-
 **항상 생성**: `README.md`, `CLAUDE.md`, `docs/INDEX.md`, `docs/QUICK_REF.md`, `docs/ROADMAP.md`, `docs/references/README.md`
 
 ---
@@ -346,13 +334,6 @@ docs/
   references/
     README.md
 
-[기존 유지 — 건드리지 않음]
-docs/01-plan/
-docs/02-design/
-docs/03-analysis/
-docs/04-report/
-docs/archive/
-
 [이 프로젝트에 추가]
 docs/references/AUTH.md         ← 로그인 + RBAC
 docs/references/DB.md           ← 데이터 영속성 + 검색 전략
@@ -374,26 +355,6 @@ YES면 아래 순서로 생성한다:
 3. `docs/INDEX.md` — 모든 active 문서 링크 + 한 줄 설명
 4. `docs/ROADMAP.md` — MVP 스코프 컷 결과 기반으로 작성
 5. 나머지 `docs/references/*.md` — 위 섹션 템플릿 따름
-
----
-
-## 하네스 엔지니어링 체크리스트
-
-파일 생성 후 아래 항목이 모두 충족되는지 점검한다:
-
-| 체크 | 항목 | 확인 기준 |
-|------|------|----------|
-| □ | CLAUDE.md에 빌드/테스트 커맨드 | 에이전트가 자기 작업을 검증 가능 |
-| □ | CLAUDE.md에 명시적 코딩 컨벤션 | 스타일 드리프트 방지 |
-| □ | CLAUDE.md에 Do Not 목록 | 흔한 실수 사전 차단 |
-| □ | CLAUDE.md에 파일 구조 | 에이전트가 파일 생성 위치를 즉시 파악 |
-| □ | CLAUDE.md에 환경변수 목록 + 노출 범위 | 보안 사고 방지 |
-| □ | docs/ROADMAP.md에 MVP 스코프 | 에이전트가 우선순위 판단 가능 |
-| □ | docs/references/에 기술 상세 | CLAUDE.md 150줄 이내 유지 + 필요 시 참조 |
-| □ | 전체 150줄 초과 시 references로 위임 | 컨텍스트 밀도 유지 |
-
-> 이 체크리스트를 통과하면 다음 세션에서 에이전트는 "이 프로젝트 뭐야?" 대신
-> 바로 "어떤 작업부터 할까?" 로 시작할 수 있다.
 
 ---
 
