@@ -1,6 +1,14 @@
 # Web Project Plan
 
-> Claude Code skill that turns a vague web project idea into a concrete project setup through a structured interview.
+> Claude Code skill that turns a vague web project idea into a concrete project setup — and simultaneously builds the AI agent's execution context (harness engineering).
+
+## Why this skill?
+
+Starting a new project with Claude Code? The agent doesn't know your stack, conventions, or what you're building. This skill solves that by **interviewing you once** and generating everything the agent needs to work autonomously in future sessions.
+
+**Two goals in one interview:**
+- **For you**: Covers all the things you'd forget to think about (auth, search, payments, responsive design, SEO, testing, CI/CD...)
+- **For the agent**: Generates `CLAUDE.md` + `docs/` that serve as persistent context — no more repeating yourself every session
 
 ## What it does
 
@@ -45,9 +53,56 @@ references/
   CLAUDE_MD_GUIDE.md            # CLAUDE.md writing guide & templates
 ```
 
+## Example output: CLAUDE.md
+
+After the interview, you get a CLAUDE.md like this (trimmed):
+
+```md
+## Project Overview
+Taskflow: Team task management + real-time collaboration
+Stack: Next.js 15, Tailwind v4, shadcn/ui, Supabase, Drizzle ORM
+
+## Commands
+dev:        pnpm dev
+build:      pnpm build
+test:       pnpm test
+lint:       pnpm lint
+typecheck:  pnpm typecheck
+db:migrate: pnpm db:migrate
+
+## Project Structure
+src/
+  app/           # Next.js App Router
+  components/
+    ui/          # shadcn/ui (DO NOT modify)
+    tasks/       # feature components
+  lib/
+    db/          # Drizzle schema + client
+    supabase/    # server / client separated
+
+## Key Conventions
+- Components: PascalCase, named export
+- Server components by default, 'use client' only when needed
+- DB access: Server Action or API Route only
+
+## Do Not
+- Never modify src/components/ui/
+- Never use `any` type
+- Never commit console.log
+- Never expose SUPABASE_SERVICE_ROLE_KEY to client
+```
+
+This gives the agent **immediate context** — it knows the stack, the rules, and where everything lives. No more "what framework are you using?" on every session.
+
+## What is harness engineering?
+
+Harness engineering = designing your project environment (CLAUDE.md, docs/, directory structure) so AI agents can operate effectively from the first prompt.
+
+This skill automates that process: the interview questions are designed to extract exactly the information that becomes high-density agent context.
+
 ## Who is this for
 
-Developers who use Claude Code and want to skip the "blank project" paralysis. Instead of setting up docs manually, just talk through your idea and get a structured project scaffold.
+Developers who use Claude Code and want to skip the "blank project" paralysis. Instead of setting up docs manually, just talk through your idea and get a structured project scaffold — with the bonus of a perfectly configured AI agent context.
 
 ## Language
 

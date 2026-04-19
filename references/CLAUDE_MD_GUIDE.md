@@ -20,7 +20,7 @@ CLAUDE.md는 "온보딩 문서"가 아니라 **에이전트에게 주는 실행 
 ### 1. Project Overview
 ```md
 ## Project Overview
-[앱 이름]: [한 줄 설명]
+[프로젝트 이름]: [한 줄 설명]
 Stack: [확정된 기술 목록]
 ```
 두 줄 이내.
