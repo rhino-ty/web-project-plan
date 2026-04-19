@@ -283,14 +283,24 @@ Show the full feature list from Phase 2–3:
 
 | Q5 Answer | File generated |
 |-----------|----------------|
-| Claude Code | `CLAUDE.md` (Claude Code reads this natively) |
-| Codex / Copilot / Gemini | `AGENTS.md` (cross-agent standard) |
+| Claude Code | `CLAUDE.md` |
+| Codex / Copilot / Gemini | `AGENTS.md` |
 | Cursor | `AGENTS.md` + `.cursorrules` suggested |
-| None / not sure | `AGENTS.md` (most universal) |
+| None / not sure | Present the options and recommend |
 
-> Content is the same regardless of filename: project overview, commands, structure, conventions, env vars, do-not rules.
-> Only the filename changes to match what each agent reads natively.
+> Content is the same regardless of filename — only the filename changes to match what each agent reads.
 > Write the file following `references/AGENTS_MD_GUIDE.md`.
+>
+> **If the user doesn't specify an AI tool, or says "not sure":**
+> Present a short recommendation like this:
+>
+> "Which AI coding tool will you use? This decides the context filename:
+> - **Claude Code** → `CLAUDE.md`
+> - **Codex / Copilot / Gemini** → `AGENTS.md`
+> - **Not sure / multiple** → I'll generate `AGENTS.md` (most widely supported)
+> - **None** → I'll still generate `AGENTS.md` — useful if you adopt one later"
+>
+> Then proceed with their choice. Don't silently pick one.
 
 ---
 
