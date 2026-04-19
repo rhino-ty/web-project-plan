@@ -4,11 +4,11 @@
 
 ## What it does
 
-When you say things like "I want to build a web project" or "new project", this skill kicks in and walks you through a 4-phase interview:
+When you say "I want to build a web project" or "new project", this skill walks you through a 4-phase interview:
 
 | Phase | What happens |
 |-------|-------------|
-| **1. Identity** | App name, target users, web app type (SPA/SSR/SSG) |
+| **1. Identity** | Project name, target users, web project type (SPA/SSR/SSG) |
 | **2. Features** | DB, auth, search, payments, AI, file storage, notifications, i18n, realtime |
 | **3. Design & UI** | References, responsive layout, dark mode, SEO, interactions |
 | **4. Stack & MVP** | Tech stack proposal, MVP scope cut, deploy & CI/CD |
@@ -33,17 +33,15 @@ npx skills add rhino-ty/web-project-plan
 
 ## Trigger keywords
 
-- `web project plan`, `new project`, `project setup`
-- `document structure`, `pick a stack`
-- Korean: `웹 프로젝트 시작`, `새 프로젝트 시작`, `웹앱 기획`, `문서 구조 잡아줘`, `프로젝트 세팅`, `스택 잡아줘`
-
-## File structure
-
-```
-SKILL.md                        # Main skill instructions
-references/
-  CLAUDE_MD_GUIDE.md            # CLAUDE.md writing guide & templates
-```
+| Language | Keywords |
+|----------|----------|
+| English | `new project`, `project setup`, `web project plan`, `pick a stack`, `scaffold` |
+| Korean | `새 프로젝트`, `프로젝트 세팅`, `웹앱 기획`, `스택 잡아줘`, `문서 구조 잡아줘` |
+| Japanese | `新しいプロジェクト`, `プロジェクトセットアップ`, `スタック選定` |
+| Chinese | `新项目`, `项目搭建`, `技术栈选择` |
+| French | `nouveau projet`, `configuration du projet` |
+| German | `neues Projekt`, `Projekt einrichten` |
+| Spanish | `nuevo proyecto`, `configurar proyecto` |
 
 ## Example output: CLAUDE.md
 
@@ -59,39 +57,42 @@ dev:        pnpm dev
 build:      pnpm build
 test:       pnpm test
 lint:       pnpm lint
-typecheck:  pnpm typecheck
-db:migrate: pnpm db:migrate
 
 ## Project Structure
 src/
   app/           # Next.js App Router
   components/
     ui/          # shadcn/ui (DO NOT modify)
-    tasks/       # feature components
   lib/
     db/          # Drizzle schema + client
-    supabase/    # server / client separated
 
 ## Key Conventions
 - Components: PascalCase, named export
 - Server components by default, 'use client' only when needed
-- DB access: Server Action or API Route only
 
 ## Do Not
 - Never modify src/components/ui/
 - Never use `any` type
-- Never commit console.log
 - Never expose SUPABASE_SERVICE_ROLE_KEY to client
+```
+
+## File structure
+
+```
+SKILL.md                        # Main skill instructions
+references/
+  CLAUDE_MD_GUIDE.md            # CLAUDE.md writing guide & templates
 ```
 
 ## Who is this for
 
-Developers who use Claude Code and want to skip the "blank project" paralysis. Instead of setting up docs manually, just talk through your idea and get a structured project scaffold.
+Developers who use Claude Code and want to skip the "blank project" paralysis. Talk through your idea and get a structured project scaffold.
 
 ## Language
 
-- Skill instructions: Korean
-- Works with: Korean conversations (English triggers also supported)
+- Skill instructions and interview: English
+- Responds in the user's language
+- Triggers work across 7 languages
 
 ## License
 
