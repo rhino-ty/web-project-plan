@@ -358,6 +358,19 @@ When writing `CLAUDE.md` / `AGENTS.md`, apply these principles (adapted from [Ka
 3. **Trace every line to a Phase 1-3 answer** — no speculative future-proofing, no sections for features the user didn't request. If a line can't point back to an interview answer, cut it.
 4. **Verifiable, not aspirational** — Commands must actually run. "Do Not" rules must be checkable. Replace "follow best practices" with "Server components by default, `'use client'` only when needed".
 
+#### Required block in generated file
+
+Append this section verbatim at the end of the generated `CLAUDE.md` / `AGENTS.md`. Counts toward length budget (~7 lines):
+
+```md
+## Coding Principles
+- Surface assumptions; ask when unclear, don't pick silently.
+- Minimum code only — no speculative features, abstractions, or "flexibility" that wasn't requested.
+- Surgical changes — every changed line must trace to the request; don't refactor unrelated code.
+- Define verifiable success before coding (test, command, or expected output).
+- For multi-step tasks, state a brief plan with verify steps before executing.
+```
+
 ---
 
 ## Final Output
